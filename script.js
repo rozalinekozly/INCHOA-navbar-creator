@@ -2,7 +2,16 @@ function generateNavbar() {
   const transparent = document.getElementById("transparent").value;
   const blurry = document.getElementById("blurry").value;
   const colored = document.getElementById("colored").value;
-  const colorHex = document.getElementById("colorHex").value || "#ffffff";
+
+  const colorHexInput = document.getElementById("colorHex").value.trim();
+  const colorPicker = document.getElementById("colorPicker").value;
+  const colorHex = colorHexInput || colorPicker;
+
+  const bgGradient = document.getElementById("bgGradient").value;
+  const fontColor = document.getElementById("fontColor").value;
+  const fontFamily = document.getElementById("fontFamily").value;
+  const fontSize = document.getElementById("fontSize").value || "16px";
+
   const titles = document.getElementById("titles").value.split(",").map(t => t.trim());
   const shape = document.getElementById("shape").value;
   const sticky = document.getElementById("sticky").value;
@@ -20,9 +29,22 @@ function generateNavbar() {
   let css = `#navbar {\n`;
   css += `  width: ${width};\n`;
   css += `  padding: 0 ${padding};\n`;
-  if (transparent === "yes") css += `  background-color: transparent;\n`;
-  else if (colored === "yes") css += `  background-color: ${colorHex};\n`;
-  else css += `  background-color: #eeeeee;\n`;
+
+  if (transparent === "yes") {
+    css += `  background-color: transparent;\n`;
+  } else if (colored === "yes") {
+    if (bgGradient === "left") {
+      css += `  background: linear-gradient(to left, ${colorHex}, transparent);\n`;
+    } else if (bgGradient === "right") {
+      css += `  background: linear-gradient(to right, ${colorHex}, transparent);\n`;
+    } else if (bgGradient === "aura") {
+      css += `  background: radial-gradient(circle, ${colorHex}, transparent);\n`;
+    } else {
+      css += `  background-color: ${colorHex};\n`;
+    }
+  } else {
+    css += `  background-color: #eeeeee;\n`;
+  }
 
   if (blurry === "yes") css += `  backdrop-filter: blur(10px);\n`;
   if (sticky === "yes") css += `  position: sticky;\n  top: 0;\n`;
@@ -37,26 +59,32 @@ function generateNavbar() {
     default:
       css += `  border-radius: 0px;\n`;
   }
+
   css += `}\n\n`;
 
   css += `#navbar nav ul {\n  list-style: none;\n  display: flex;\n  gap: 2rem;\n  justify-content: center;\n}\n\n`;
-  css += `#navbar nav ul li a {\n  text-decoration: none;\n  color: black;\n  font-weight: bold;\n}`;
+
+  css += `#navbar nav ul li a {\n`;
+  css += `  text-decoration: none;\n`;
+  css += `  color: ${fontColor};\n`;
+  css += `  font-weight: bold;\n`;
+  css += `  font-family: ${fontFamily};\n`;
+  css += `  font-size: ${fontSize};\n`;
+  css += `}`;
 
   // Output code
   document.getElementById("htmlOutput").innerText = html;
   document.getElementById("cssOutput").innerText = css;
 
-  // Set preview
+  // Set live preview
   const previewContainer = document.getElementById("navbarPreview");
-
-  // Clear previous preview
   previewContainer.innerHTML = html;
 
-  // Remove any old styles
+  // Remove old styles
   const existingStyles = previewContainer.querySelectorAll("style");
   existingStyles.forEach(tag => tag.remove());
 
-  // Add new style
+  // Apply new styles
   const styleTag = document.createElement("style");
   styleTag.innerHTML = css;
   previewContainer.appendChild(styleTag);

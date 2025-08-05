@@ -1,4 +1,5 @@
-/* GitHub dark theme base */
+/* GitHub Dark Theme */
+
 body {
   margin: 0;
   padding: 2rem;
@@ -30,7 +31,8 @@ label {
 }
 
 input[type="text"],
-select {
+select,
+input[type="color"] {
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.25rem;
@@ -70,9 +72,10 @@ pre {
   font-size: 0.9rem;
   line-height: 1.5;
   color: #f0f6fc;
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   white-space: pre-wrap;
 }
+
 #navbarPreview {
   margin-top: 2rem;
   padding: 1rem;

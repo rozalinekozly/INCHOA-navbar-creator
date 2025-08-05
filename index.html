@@ -10,6 +10,7 @@
   <h1>Navbar Generator</h1>
 
   <form id="navbarForm">
+    <!-- Transparent -->
     <label>Transparent?
       <select id="transparent">
         <option value="yes">Yes</option>
@@ -17,6 +18,7 @@
       </select>
     </label><br><br>
 
+    <!-- Blurry -->
     <label>Blurry?
       <select id="blurry">
         <option value="yes">Yes</option>
@@ -24,18 +26,59 @@
       </select>
     </label><br><br>
 
-    <label>Colored?
+    <!-- Colored with Picker -->
+    <label>Background Colored?
       <select id="colored">
         <option value="no">No</option>
         <option value="yes">Yes</option>
       </select>
     </label>
-    <input type="text" id="colorHex" placeholder="#ffffff"><br><br>
+    <div style="margin-left: 1rem;">
+      <label>Pick a color:
+        <input type="color" id="colorPicker" value="#ffffff">
+      </label><br>
+      <label>Or enter hex:
+        <input type="text" id="colorHex" placeholder="#ffffff">
+      </label>
+    </div><br>
 
-    <label>List titles (comma separated):
+    <!-- Gradient -->
+    <label>Background Gradient:
+      <select id="bgGradient">
+        <option value="none">None</option>
+        <option value="left">Fade to Left</option>
+        <option value="right">Fade to Right</option>
+        <option value="aura">Aura (from center)</option>
+      </select>
+    </label><br><br>
+
+    <!-- Font Color -->
+    <label>Font Color:
+      <input type="color" id="fontColor" value="#000000">
+    </label><br><br>
+
+    <!-- Font Family -->
+    <label>Font Family:
+      <select id="fontFamily">
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="Courier New, monospace">Courier New</option>
+        <option value="Roboto, sans-serif">Roboto</option>
+        <option value="Tahoma, sans-serif">Tahoma</option>
+      </select>
+    </label><br><br>
+
+    <!-- Font Size -->
+    <label>Font Size:
+      <input type="text" id="fontSize" placeholder="16px">
+    </label><br><br>
+
+    <!-- List Titles -->
+    <label>List titles (comma-separated):
       <input type="text" id="titles" placeholder="Home,About,Contact">
     </label><br><br>
 
+    <!-- Shape -->
     <label>Shape:
       <select id="shape">
         <option value="rectangle">Rectangle</option>
@@ -44,6 +87,7 @@
       </select>
     </label><br><br>
 
+    <!-- Sticky -->
     <label>Sticky?
       <select id="sticky">
         <option value="yes">Yes</option>
@@ -51,6 +95,7 @@
       </select>
     </label><br><br>
 
+    <!-- Width and Padding -->
     <label>Width (px or %):
       <input type="text" id="width" placeholder="100%">
     </label><br><br>
@@ -61,15 +106,15 @@
 
     <button type="button" onclick="generateNavbar()">Create Navbar</button>
   </form>
-  
-  <h2>Live Preview:</h2>
-<div id="navbarPreview" style="margin: 2rem auto; max-width: 800px;"></div>
 
   <h2>Generated HTML:</h2>
   <pre id="htmlOutput"></pre>
 
   <h2>Generated CSS:</h2>
   <pre id="cssOutput"></pre>
+
+  <h2>Live Preview:</h2>
+  <div id="navbarPreview"></div>
 
   <script src="script.js"></script>
 </body>
