@@ -11,6 +11,7 @@ function generateNavbar() {
   const fontColor = document.getElementById("fontColor").value;
   const fontFamily = document.getElementById("fontFamily").value;
   const fontSize = document.getElementById("fontSize").value || "16px";
+  const itemGap = document.getElementById("itemGap").value || "2rem";
 
   const titles = document.getElementById("titles").value.split(",").map(t => t.trim());
   const shape = document.getElementById("shape").value;
@@ -62,7 +63,12 @@ function generateNavbar() {
 
   css += `}\n\n`;
 
-  css += `#navbar nav ul {\n  list-style: none;\n  display: flex;\n  gap: 2rem;\n  justify-content: center;\n}\n\n`;
+  css += `#navbar nav ul {\n`;
+  css += `  list-style: none;\n`;
+  css += `  display: flex;\n`;
+  css += `  justify-content: center;\n`;
+  css += `  gap: ${itemGap};\n`;
+  css += `}\n\n`;
 
   css += `#navbar nav ul li a {\n`;
   css += `  text-decoration: none;\n`;
@@ -76,15 +82,14 @@ function generateNavbar() {
   document.getElementById("htmlOutput").innerText = html;
   document.getElementById("cssOutput").innerText = css;
 
-  // Set live preview
+  // Live preview
   const previewContainer = document.getElementById("navbarPreview");
   previewContainer.innerHTML = html;
 
-  // Remove old styles
+  // Clear old styles
   const existingStyles = previewContainer.querySelectorAll("style");
   existingStyles.forEach(tag => tag.remove());
 
-  // Apply new styles
   const styleTag = document.createElement("style");
   styleTag.innerHTML = css;
   previewContainer.appendChild(styleTag);

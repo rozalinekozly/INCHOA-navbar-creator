@@ -10,6 +10,7 @@
   <h1>Navbar Generator</h1>
 
   <form id="navbarForm">
+
     <!-- Transparent -->
     <label>Transparent?
       <select id="transparent">
@@ -26,7 +27,7 @@
       </select>
     </label><br><br>
 
-    <!-- Colored with Picker -->
+    <!-- Colored -->
     <label>Background Colored?
       <select id="colored">
         <option value="no">No</option>
@@ -60,17 +61,23 @@
     <!-- Font Family -->
     <label>Font Family:
       <select id="fontFamily">
-        <option value="Arial, sans-serif">Arial</option>
-        <option value="Georgia, serif">Georgia</option>
-        <option value="Courier New, monospace">Courier New</option>
-        <option value="Roboto, sans-serif">Roboto</option>
-        <option value="Tahoma, sans-serif">Tahoma</option>
+        <option value="Arial, sans-serif" style="font-family: Arial;">Arial</option>
+        <option value="Georgia, serif" style="font-family: Georgia;">Georgia</option>
+        <option value="'Courier New', monospace" style="font-family: 'Courier New';">Courier New</option>
+        <option value="Roboto, sans-serif" style="font-family: Roboto;">Roboto</option>
+        <option value="Tahoma, sans-serif" style="font-family: Tahoma;">Tahoma</option>
+        <option value="Verdana, sans-serif" style="font-family: Verdana;">Verdana</option>
       </select>
     </label><br><br>
 
     <!-- Font Size -->
     <label>Font Size:
       <input type="text" id="fontSize" placeholder="16px">
+    </label><br><br>
+
+    <!-- Item Spacing -->
+    <label>Item Spacing (gap between menu items):
+      <input type="text" id="itemGap" placeholder="2rem">
     </label><br><br>
 
     <!-- List Titles -->
