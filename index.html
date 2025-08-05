@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Navbar Generator</h1>
+
+  <form id="navbarForm">
+    <label>Transparent?
+      <select id="transparent">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </label><br><br>
+
+    <label>Blurry?
+      <select id="blurry">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </label><br><br>
+
+    <label>Colored?
+      <select id="colored">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </label>
+    <input type="text" id="colorHex" placeholder="#ffffff"><br><br>
+
+    <label>List titles (comma separated):
+      <input type="text" id="titles" placeholder="Home,About,Contact">
+    </label><br><br>
+
+    <label>Shape:
+      <select id="shape">
+        <option value="rectangle">Rectangle</option>
+        <option value="rounded">Rounded Corners</option>
+        <option value="cylinder">Cylinder</option>
+      </select>
+    </label><br><br>
+
+    <label>Sticky?
+      <select id="sticky">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </label><br><br>
+
+    <label>Width (px or %):
+      <input type="text" id="width" placeholder="100%">
+    </label><br><br>
+
+    <label>Side Padding (px):
+      <input type="text" id="padding" placeholder="20px">
+    </label><br><br>
+
+    <button type="button" onclick="generateNavbar()">Create Navbar</button>
+  </form>
+  
+  <h2>Live Preview:</h2>
+<div id="navbarPreview" style="margin: 2rem auto; max-width: 800px;"></div>
+
+  <h2>Generated HTML:</h2>
+  <pre id="htmlOutput"></pre>
+
+  <h2>Generated CSS:</h2>
+  <pre id="cssOutput"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
